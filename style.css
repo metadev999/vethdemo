@@ -522,6 +522,18 @@ ul.menu a {
     display: none;
 }
 
+.tx-section {
+    max-height: 264px; /* adjust as needed */
+    overflow-y: hidden; /* or scroll if you want scroll */
+    padding: 10px;
+}
+
+.tx-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
     .logo-text {
         font-weight: bold;
         font-size: 20px;

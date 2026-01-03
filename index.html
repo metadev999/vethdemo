@@ -461,6 +461,10 @@ function randomAmount() {
     return (Math.random() * 2).toFixed(2); // 0.00 to 2.00 ETH
 }
 
+if (txList.children.length > 5) {
+    txList.removeChild(txList.lastChild);
+}
+
 // Add a new transaction to the list
 function addTransaction() {
     const li = document.createElement('li');
@@ -479,16 +483,17 @@ function addTransaction() {
 
     // Animate in
     setTimeout(() => {
-        li.style.transition = 'all 1s ease'; // slower animation
+        li.style.transition = 'all 1s ease'; // smooth animation
         li.style.opacity = 1;
         li.style.transform = 'translateY(0)';
     }, 50);
 
-    // Keep only latest 10 transactions
-    if (txList.children.length > 10) {
+    // Keep only latest 5 transactions
+    if (txList.children.length > 5) {
         txList.removeChild(txList.lastChild);
     }
 }
+
 
 // Simulate transactions every 5 seconds (slower)
 setInterval(addTransaction, 8000);
