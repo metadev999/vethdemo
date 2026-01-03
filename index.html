@@ -212,13 +212,7 @@
                         </div>
 
                         <!-- TRANSACTION HISTORY (INSIDE MAIN BOX) -->
-                       <div class="tx-section">
-    <h3>Recent Contributions</h3>
-    <ul class="tx-list" id="txList">
-        <!-- Transactions will be generated dynamically -->
-    </ul>
-</div>
-
+                      <ul class="tx-list" id="txList"></ul>
 
                     </div>
                 </div>
@@ -442,67 +436,67 @@ function toggleSidebar() {
     sidebar.classList.toggle("collapsed");
 }
 </script>
-    
-<script>
- const txList = document.getElementById('txList');
 
-// Function to generate random Ethereum addresses
-function randomAddress() {
-    const chars = '0123456789ABCDEF';
-    let addr = '0x';
-    for (let i = 0; i < 40; i++) {
-        addr += chars[Math.floor(Math.random() * chars.length)];
+ 
+
+ <script>
+    const MORALIS_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6ImZiZWMxZjVhLTAzY2EtNDg4My1hZDZjLTQ5MjgyOGZiMDRjYyIsIm9yZ0lkIjoiMjY2NTAzIiwidXNlcklkIjoiMjcxMTQ2IiwidHlwZUlkIjoiOGMxYjc1ZDUtZmMyMi00Y2YxLThlOGYtM2NiNTRmYzYyYmMxIiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE2ODIwNTEwOTksImV4cCI6NDgzNzgxMTA5OX0.CFyk2Y2qAihLgswhe5tzOpHnaYAyy-_gPm6-mn3_xN0";
+ 
+const txListEl = document.getElementById('txList'); 
+
+// Fetch recent incoming transactions
+ async function fetchRecentTx() {
+    try {
+        const url = `https://deep-index.moralis.io/api/v2/${presaleAddress}?chain=eth&limit=10`;
+        
+        const res = await fetch(url, {
+            headers: {
+                'accept': 'application/json',
+                'X-API-Key': MORALIS_API_KEY
+            }
+        });
+
+        const data = await res.json();
+        console.log("TX List API response:", data); // ✅ check console
+
+        if(data.result && data.result.length) {
+            txListEl.innerHTML = "";
+            let count = 0;
+            data.result.forEach(tx => {
+                // Only show incoming transactions
+                if(tx.to_address.toLowerCase() === presaleAddress.toLowerCase() && count < 5){
+                    const from = tx.from_address;
+                    const valueEth = (tx.value / 1e18).toFixed(4);
+
+                    const li = document.createElement('li');
+                    li.innerHTML = `<span class="addr">${from.slice(0,6)}...${from.slice(-4)}</span>
+                                    <span class="amt">${valueEth} ETH</span>`;
+                    txListEl.appendChild(li);
+                    count++;
+                }
+            });
+
+            if(count === 0){
+                txListEl.innerHTML = "<li>No recent incoming transactions</li>";
+            }
+        } else {
+            txListEl.innerHTML = "<li>No transactions</li>";
+        }
+    } catch(err) {
+        console.error("Error fetching transactions:", err);
+        txListEl.innerHTML = "<li>Error fetching transactions</li>";
     }
-    return addr;
 }
 
-// Function to generate a random ETH amount
-function randomAmount() {
-    return (Math.random() * 2).toFixed(2); // 0.00 to 2.00 ETH
-}
+// Initial load
+fetchRecentTx();
 
-if (txList.children.length > 5) {
-    txList.removeChild(txList.lastChild);
-}
-
-// Add a new transaction to the list
-function addTransaction() {
-    const li = document.createElement('li');
-
-    // Generate random address and amount
-    const addr = randomAddress();
-    const amount = randomAmount();
-
-    li.innerHTML = `<span class="addr">${addr.slice(0,4)}...${addr.slice(-4)}</span>
-                    <span class="amt">${amount} ETH</span>`;
-
-    // Set initial style for animation
-    li.style.opacity = 0;
-    li.style.transform = 'translateY(10px)';
-    txList.prepend(li);
-
-    // Animate in
-    setTimeout(() => {
-        li.style.transition = 'all 1s ease'; // smooth animation
-        li.style.opacity = 1;
-        li.style.transform = 'translateY(0)';
-    }, 50);
-
-    // Keep only latest 5 transactions
-    if (txList.children.length > 5) {
-        txList.removeChild(txList.lastChild);
-    }
-}
+// Refresh every 15 seconds
+setInterval(fetchRecentTx, 15000);
+</script>
 
 
-// Simulate transactions every 5 seconds (slower)
-setInterval(addTransaction, 8000);
 
-// Optional: generate initial 3 transactions
-for (let i = 0; i < 3; i++) addTransaction();
-
-
-    </script>
 
 
 
