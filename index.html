@@ -326,15 +326,24 @@ window.onclick = (event) => {
 }
 
         // Connect wallet
-      async function connectWallet(type) {
+     // Connect wallet (Ethereum Mainnet)
+async function connectWallet(type) {
     try {
         if (!window.ethereum) {
             alert("EVM Wallet not detected");
             return;
         }
 
-        // Request accounts (works for MetaMask, Trust Wallet, Base Wallet)
-        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        // 🔁 Force switch to Ethereum Mainnet
+        await ethereum.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: '0x1' }] // Mainnet
+        });
+
+        // Request accounts (MetaMask, Trust, Base)
+        const accounts = await ethereum.request({ 
+            method: 'eth_requestAccounts' 
+        });
         userAccount = accounts[0];
 
         web3 = new Web3(window.ethereum);
@@ -347,13 +356,22 @@ window.onclick = (event) => {
         document.getElementById("mybalance").innerText =
             parseFloat(web3.utils.fromWei(balance, "ether")).toFixed(4) + " ETH";
 
-        // Close modal after successful connection
+        // Close modal after success
         walletModal.style.display = "none";
+
+        console.log("Connected on Ethereum Mainnet:", userAccount);
+
     } catch (err) {
         console.error("Wallet connection failed:", err);
-        alert("Wallet connection failed!");
+
+        if (err.code === 4001) {
+            alert("Connection rejected by user");
+        } else {
+            alert("Wallet connection failed!");
+        }
     }
 }
+
 
         // Send ETH
         async function sendETH() {
