@@ -321,6 +321,10 @@ body.light .progress-container {
     padding-top: 22px;
     border-top: 1px dashed rgba(255,255,255,0.1);
 }
+body.light input {
+    color: #000;
+    border: 1px solid #000000 !important;
+}
 
 .tx-section h3 {
     font-size: 14px;
@@ -640,6 +644,9 @@ button.wallet-option img{
         padding: 10px;
         border-radius: 8px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    .nav-right button.icon-btn{
+        display: none;
     }
 
     .nav-links a {
